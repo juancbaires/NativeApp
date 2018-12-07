@@ -1,15 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
+import { blue } from 'ansi-colors';
 export default class App extends React.Component {
+  state = {
+    food: "pizza"
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+        <Text style={styles.text}>Hello World!Im Juan and my favorite food is {this.state.food}</Text>
       </View>
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -18,4 +22,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  text: {
+    color: 'blue',
+  }
 });
