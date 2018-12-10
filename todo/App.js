@@ -1,15 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { blue } from 'ansi-colors';
+import TodoApp from './src/TodoApp';
 export default class App extends React.Component {
   state = {
     food: "pizza"
   }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Hello World!Im Juan and my favorite food is {this.state.food}</Text>
-      </View>
+      <TodoApp />
     );
   }
 }
