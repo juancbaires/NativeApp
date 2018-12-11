@@ -1,13 +1,13 @@
-//import liraries
+//import libraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-
+import AddTodo from './containers/AddTodo'
 // create a component
 class TodoApp extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>TodoApp is for cool people</Text>
+                <AddTodo />
             </View>
         );
     }
@@ -17,8 +17,9 @@ class TodoApp extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        paddingTop: 40,
+        // justifyContent: 'center',
+        // alignItems: 'center',
         backgroundColor: 'white',
     },
 });
