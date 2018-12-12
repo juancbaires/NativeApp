@@ -8,19 +8,28 @@ import {
     TouchableOpacity
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'
+import { connect } from 'react-redux'
 // create a component
 class AddTodo extends Component {
+    state = {
+        text: ''
+    }
+    addTodo = () => {
+        this.props.dispatch({ type: 'ADD_TODO', text })
+        this.setState({ text: '' })
+    }
     render() {
         return (
             <View style={{ flexDirection: 'row', marginHorizontal: 20 }}>
                 <TextInput
+                    onChangeText={(text) => this.setState({ text })}
                     placeholder="Eg. Create New TODO"
                     style={{
                         borderWidth: 1, borderColor: '#f2f2e1',
                         backgroundColor: "#eaeaea", height: 50, flex: 1, padding: 5
                     }}
                 />
-                <TouchableOpacity onPress={() => alert('added TODO')} />
+                <TouchableOpacity onPress={() => this.addTodo(this.state.text)} />
                 <View style={{
                     height: 50, backgroundColor: "#eaeaea",
                     alignItems: 'center', justifyContent: 'center'
@@ -31,7 +40,7 @@ class AddTodo extends Component {
         );
     }
 }
-
+export default connect()(AddTodo);
 // define your styles
 const styles = StyleSheet.create({
     container: {
@@ -43,4 +52,4 @@ const styles = StyleSheet.create({
 });
 
 //make this component available to the app
-export default AddTodo;
+
