@@ -14,7 +14,7 @@ class AddTodo extends Component {
     state = {
         text: ''
     }
-    addTodo = () => {
+    addTodo = (text) => {
         this.props.dispatch({ type: 'ADD_TODO', text })
         this.setState({ text: '' })
     }
@@ -23,24 +23,26 @@ class AddTodo extends Component {
             <View style={{ flexDirection: 'row', marginHorizontal: 20 }}>
                 <TextInput
                     onChangeText={(text) => this.setState({ text })}
+                    value={this.state.text}
                     placeholder="Eg. Create New TODO"
                     style={{
                         borderWidth: 1, borderColor: '#f2f2e1',
                         backgroundColor: "#eaeaea", height: 50, flex: 1, padding: 5
                     }}
                 />
-                <TouchableOpacity onPress={() => this.addTodo(this.state.text)} />
-                <View style={{
-                    height: 50, backgroundColor: "#eaeaea",
-                    alignItems: 'center', justifyContent: 'center'
-                }}>
-                    <Ionicons name="md-add" size={30} style={{ color: 'red', padding: 10 }}></Ionicons>
-                </View>
+                <TouchableOpacity onPress={() => this.addTodo(this.state.text)}>
+                    <View style={{
+                        height: 50, backgroundColor: "#eaeaea",
+                        alignItems: 'center', justifyContent: 'center'
+                    }}>
+                        <Ionicons name="md-add" size={30} style={{ color: 'red', padding: 10 }}></Ionicons>
+                    </View>
+                </TouchableOpacity>
             </View>
         );
     }
 }
-export default connect()(AddTodo);
+
 // define your styles
 const styles = StyleSheet.create({
     container: {
@@ -53,3 +55,4 @@ const styles = StyleSheet.create({
 
 //make this component available to the app
 
+export default connect()(AddTodo);

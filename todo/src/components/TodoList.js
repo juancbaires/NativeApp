@@ -5,10 +5,14 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 // create a component
 const TodoList = ({ todos, toggleTodo }) => {
     return (
-        <View>
+        <View style={{ padding: 20 }}>
             {todos.map(todo => {
-                <TouchableOpacity key={todo.id}>
-                    <Text></Text>
+                <TouchableOpacity key={todo.id} onPress={() => toggleTodo(todo.id)}>
+                    <Text style={{
+                        fontSize: 24,
+                        textDecorationLine:
+                            todo.completed ? 'line-through' : 'none'
+                    }}>{todo.text}</Text>
                 </TouchableOpacity>
             })}
         </View>
